@@ -1,8 +1,6 @@
 import numpy
 import scipy.stats
 import matplotlib.pyplot as mp
-import statsmodels
-import statsmodels.api as sm
 import matplotlib.animation
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -11,54 +9,6 @@ from mpl_toolkits.mplot3d import Axes3D
 #
 # 0.5s**2x**2dV/dx + rxdV/dx - rV = 0
 #
-# The C-E coefficients are 
-# a =  0.5*s**2
-# b = r
-# c = -r
-#
-# The boundaries are: 
-# (a) V(x_) = K - x_
-# (b) dV(x_)/dx = -1
-# and an 'improper' boundary:
-# (c) V(x) <= K
-#
-# boundary (a) exists because an investor will exercise as soon as the
-# K - x = V(x). For any other V(x) > K - x, exercise is a net loss in value
-#
-# (Recall that V(x) >= K - x otherwise we allow arbitrage: i.e.
-# payoff 10, price 9, free 1 instantaneously)
-#
-# boundary (b) exists because the general solution is of the form V(x)=
-# Ax**-b for x in (0,inf) (see below). without an additional constraint, 
-# function is free to define one or two x_ for V(x_) = K - x_. We
-# admit only one solution: if two solutions were possible, a range of x
-# would have V(x) such that V(x) is
-#  a) not admissible by NA as V(x) < K - x for x_1 < x < x_2
-#  b) non differentiable if we force V(x) = K - x for x_1 < x < x_2
-#
-# boundary (c) enforces no arbitrage because if V(x) > K one can:
-#  1) short put, obtain V > K
-#  2) counterparty payoff is bounded between -K and zero
-#  3) V - max(K-x,0) > 0 for all x > 0
-#
-# Solution sketch: 
-# 1) guess x**m 
-# 2) obtain (m(m-1)a + bm + c)x**m = 0 (x**m > 0 so quadratic equation)
-# 3) solve for m, have to obtain two real roots m1, m2
-# 4) the general solution is V(x) = Ax**m1 + Bx**m2 (linear comb of ind sol)
-#
-# 5) for r > 0 one has m1 > 0 and m2 < 0; 
-#       while for r < 0 one has m2 > 0 so the put has no solution for
-#           the given boundary conditions (see below)
-#           for r = 0, m2 = 0 and m1 > 0 (excluded as for x to infty
-#             V(x) does not go to zero)
-#
-# 6) take lim(+inf)[V(x)] = +inf as lim(+inf)[Ax**m1] = +inf
-# 7) point 6 is not admissible as V(x) is bounded. Set A = 0
-# 8) Find B through first boundary condition
-# 9) Find x_ through second boundary condition
-
-
 # Roots study:
 
 def D(r,s):
@@ -184,13 +134,6 @@ ax2.set_ylim((-1,0))
 ax2.set_xlim(x[0],K+150)
 mp.show()
 
-# the perpetual put is exercised as soon as the strategy
-# -V(t) + (K-x(t)) = 0
-# that is as soon as the exercise payoff is equal the price
-# of the contract which, if x(t) < x_, is equal to the immediate payoff
-#
-# -> it is always optimal to buy and hold as long as -V(t) + (K-x(t)) < 0
-#
 
 # simulate paths
 # in the case of a discrete simulation, P(x=x_)=0 as x_ has a continuous
