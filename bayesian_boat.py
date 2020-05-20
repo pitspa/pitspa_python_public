@@ -1,6 +1,5 @@
 import numpy
 import scipy.stats
-import statsmodels.api as sm
 import matplotlib.pyplot as mp
 from mpl_toolkits.mplot3d import Axes3D
 
