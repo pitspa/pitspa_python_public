@@ -1,18 +1,8 @@
 import numpy
-import scipy.optimize
 import scipy.stats
-import scipy.signal
-import statsmodels.tsa.stattools
-import pandas
-import cmath
 import matplotlib.pyplot as mp
 import matplotlib.patches as mpatches
-import math
-import sys
-from mpl_toolkits.mplot3d import Axes3D
-pandas.set_option('Display.max_rows', None)
-pandas.set_option('Display.max_columns', None)
-pandas.set_option('display.width', 1000)
+
 
 N = 1000
 x = numpy.linspace(-10,20,N)
