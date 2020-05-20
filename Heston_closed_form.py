@@ -1,10 +1,6 @@
 import numpy
 import scipy.stats
 import matplotlib.pyplot as mp
-import statsmodels
-import statsmodels.api as sm
-import matplotlib.animation
-from mpl_toolkits.mplot3d import Axes3D
 
 # Numerical Fourier inversion of the exact Heston characteristic function
 #
