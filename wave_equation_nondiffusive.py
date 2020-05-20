@@ -1,11 +1,6 @@
 import numpy
-import scipy.optimize
 import scipy.stats
-import random
-import statsmodels
-import statsmodels.api as sm
 import matplotlib.pyplot as mp
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation
 
 # a solution to the wave equation using Fourier transforms
