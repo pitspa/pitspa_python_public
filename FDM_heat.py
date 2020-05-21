@@ -1,7 +1,4 @@
 import numpy
-import pandas
-import scipy.optimize
-import scipy.stats
 import matplotlib.pyplot as mp
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation
