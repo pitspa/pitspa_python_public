@@ -44,7 +44,7 @@ def FDM_call(S,K,r,s,T,t): # FDM explicit method, backwards in time
 r = 0.02
 s = 0.15
 T = 2
-N_t = 16000 # N_t and N_x must be calibrated to ensure convergence
+N_t = 16000 # N_t and N_x must be calibrated to ensure stability/convergence
 N_x = 600
 t = numpy.linspace(0,T,N_t)
 x = numpy.linspace(0.01,300,N_x)
