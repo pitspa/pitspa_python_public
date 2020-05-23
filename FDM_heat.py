@@ -1,6 +1,5 @@
 import numpy
 import matplotlib.pyplot as mp
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation
 
 # a solution to the heat PDE using FDM
@@ -21,7 +20,6 @@ N_t = len(t)
 r = Dt/(Dx**2)
 a = 0.9 # diffusion parameter
 
-xgrid, tgrid = numpy.meshgrid(x,t)
 FDM_u = numpy.zeros((N_t,N_x))
 FDM_u[0,:] = u0(x) # initial condition
 for t_ in range(0,N_t-1):
