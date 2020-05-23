@@ -13,7 +13,7 @@ Dx = numpy.diff(x)[0]
 
 # 1) Finite difference explicit method
 
-Dt = 0.3*Dx**2 # Dt is chosen to ensure convergence
+Dt = 0.3*Dx**2 # Dt is chosen to ensure stability/convergence
 t = numpy.arange(0,0.1,Dt)
 N_t = len(t)
 
