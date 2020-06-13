@@ -14,6 +14,11 @@ import matplotlib.patches as mpatches
 # --------------------------------------------------------------- #
 
 def rand():
+    
+    """
+    returns a uniform rv in the interval [0,1]
+    """
+    
     return scipy.stats.uniform.rvs()
 
 alpha = numpy.array([1,1,1,1]) 
@@ -26,6 +31,16 @@ print("True p:", f)
 cumf = numpy.cumsum(f)
 
 def fun(x):
+    
+    """
+    returns the categorical sampling of the likelihood function.
+    cumf indicates the cumulative true proportions a1,a2,...,ak
+    of the Dirichlet prior. 
+    parameters:
+        x : uniform rv x, function returns the 
+            corresponding categorical sample.  
+    """
+    
     if x <= cumf[0]:
         a = 1
     elif cumf[0] < x <= cumf[1]:
