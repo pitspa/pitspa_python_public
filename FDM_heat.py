@@ -7,7 +7,7 @@ import matplotlib.animation
 def u0(x):
     
     """
-    returns the initial condition in the interval x=[0,a].
+    returns the initial condition in the interval x=[0,1].
     parameters:
         x: spatial range interval
     """
