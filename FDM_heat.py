@@ -5,6 +5,13 @@ import matplotlib.animation
 # a solution to the heat PDE using FDM
 
 def u0(x):
+    
+    """
+    returns the initial condition in the interval x=[0,a].
+    parameters:
+        x: spatial range interval
+    """
+    
     return numpy.sin(numpy.pi*x)**3*numpy.exp(-x**2*50)
 
 N_x = 200
