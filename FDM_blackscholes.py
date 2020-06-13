@@ -4,7 +4,18 @@ import matplotlib.pyplot as mp
 
 # analysis of finite difference scheme for a call option under BS
 
-def BS_call(S,K,r,s,T,t): # black-scholes call price
+def BS_call(S,K,r,s,T,t):  
+    
+    """
+    returns the Black-Scholes call price.
+    parameters:
+        S: initial price at t
+        K: strike
+        r: rf rate
+        s: vol
+        T: maturity
+        t: initial time
+    """
     
     d1 = (numpy.log(S/K)+(r+s**2/2)*(T-t))/(s*numpy.sqrt(T-t))
     d2 = d1 - s*numpy.sqrt(T-t)
@@ -12,10 +23,21 @@ def BS_call(S,K,r,s,T,t): # black-scholes call price
     return (S*scipy.stats.norm.cdf(d1)-
             K*scipy.stats.norm.cdf(d2)*numpy.exp(-r*(T-t)))
     
-def FDM_call(S,K,r,s,T,t): # FDM explicit method, backwards in time
-                           # as payoff is a terminal condition
+def FDM_call(x,K,r,s,T,t): 
     
-    N_x = len(S)
+    """
+    returns the explicit FDM appproximation of the Black-Scholes call 
+    price by backward time computation.
+    parameters:
+        x: price interval 
+        K: strike
+        r: rf rate
+        s: vol
+        T: maturity
+        t: time interval
+    """
+    
+    N_x = len(x)
     N_t = len(t)
     Dt = numpy.diff(t)[0]
     Dx = numpy.diff(x)[0]
