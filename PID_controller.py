@@ -18,7 +18,8 @@ def PID(S,K_p,K_i,K_d,dt):
     calculated. The variation of the PID depends on the current 
     error (proportional control), past terms (integral control),
     and the finite difference between the current error and the 
-    precedent error (differential control). 
+    precedent error (differential control). The sensitivities must
+    be calibrated to ensure convergence.
     parameters:
         S : the function to be approximated by the PID
         K_p, K_i, K_d : proportional, integral and differential sensitivies
