@@ -7,8 +7,17 @@ m0 = 5
 C0 = 2
 Ve = 2
 
-
-def y(N):
+def y(N,m0,C0,Ve):
+    
+    """
+    The function samples N observations of a normal random variable
+    with location initially drawn from a normal distribution. 
+    parameters:
+        N : number of obsrvations
+        m0 : the mean of the location's distribution
+        C0 : the variance of the location's distribution
+        Ve : the variance of the observed random variable
+    """
     
     theta0 = scipy.stats.norm.rvs(loc=m0,scale=numpy.sqrt(C0))
     y = scipy.stats.norm.rvs(size=N,loc=theta0,scale=numpy.sqrt(Ve))
@@ -17,15 +26,13 @@ def y(N):
 
 N = 500
 
-theta0, traj = y(N) # location is unknown, we only have noisy measurements
+theta0, traj = y(N,m0,C0,Ve) 
+                    # location is unknown, we only have noisy measurements.
                     # the bayesian approach will compute the distribution
                     # of the location given the measurements for every
                     # additional measurement in the sample
 
 print(theta0)
-
-mp.plot(traj)
-mp.show()
 
 mn_ = numpy.zeros(N)
 Cn_ = numpy.zeros(N)
@@ -51,9 +58,9 @@ for t in range(0,N):
     A[t] = scipy.stats.norm.pdf(theta_space,
          loc=mn_[t],scale=numpy.sqrt(Cn_[t]))
 
-mp.imshow(A.T,cmap=mp.cm.inferno,aspect='auto',
-           interpolation='none')
-mp.show()
+#mp.imshow(A.T,cmap=mp.cm.inferno,aspect='auto',
+#           interpolation='none')
+#mp.show()
 
 time = numpy.linspace(0,N,num=N)
 space = theta_space
