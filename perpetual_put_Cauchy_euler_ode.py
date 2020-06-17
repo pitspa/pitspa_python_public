@@ -48,6 +48,15 @@ mp.show()
 
 def V(r,s,x,K): 
     
+    """
+    Analytic solution to the perpetual put in the Black-Scholes framework.
+    parameters:
+        r : rf rate
+        s : vol
+        x : underlying price. Can be either a range of prices or a single price.
+        K : strike price 
+    """
+    
     S_ = K*m2(r,s)/(m2(r,s)-1)
     B = (K-S_)/(S_**m2(r,s))
     
@@ -92,6 +101,16 @@ s = numpy.array([0.1,0.2,0.3,0.4])
 # check the delta of the option with finite difference:
 
 def dVdx(r,s,x,K): # closed form delta
+    
+    """
+    First partial derivative wrt x of the analytic solution to the 
+    perpetual put in the Black-Scholes framework.
+    parameters:
+        r : rf rate
+        s : vol
+        x : underlying price. Should be a range of prices.
+        K : strike price 
+    """
     
     S_ = K*m2(r,s)/(m2(r,s)-1)
     B = (K-S_)/(S_**m2(r,s))
