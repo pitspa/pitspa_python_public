@@ -132,4 +132,3 @@ ax.set_zlabel('vega')
 ax.set_ylabel('time_to_maturity')
 mp.show()
 
-input('premi invio')
