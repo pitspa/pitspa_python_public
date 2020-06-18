@@ -65,6 +65,7 @@ def pdf(x,u,T,eta,lam,rho,v_,v0):
     """
     
     cf = phi(u,T,eta,lam,rho,v_,v0)
+    du = numpy.diff(u)[0]
     
     M = len(x) 
     pdf = numpy.zeros(M,dtype=numpy.complex)
