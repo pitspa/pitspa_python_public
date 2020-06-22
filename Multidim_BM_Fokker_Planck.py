@@ -34,14 +34,14 @@ my = 0.05
 sx = 0.15
 sy = 0.25
 r = -0.3
-T = 15
+T = 25
 
 N_x, N_y = (100 for i in range(0,2))
 x = numpy.linspace(x0-3,x0+3,N_x)
 y = numpy.linspace(y0-3,y0+5,N_y)
 dx = numpy.diff(x)[0]
 dy = numpy.diff(y)[0]
-N_t = 50
+N_t = 25
 t = numpy.linspace(4,T,N_t)
 
 xmesh, ymesh = numpy.meshgrid(x, y)
