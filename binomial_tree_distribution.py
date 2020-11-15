@@ -42,6 +42,8 @@ V = m_moment(2,x0,n_,p,u)-m_moment(1,x0,n_,p,u)**2
 
 mp.plot(xs,pmf,'.',markersize=1.5)
 mp.xlim((EV-numpy.sqrt(V)*3,EV+numpy.sqrt(V)*5))
+mp.xlabel('k')
+mp.ylabel('P(n,k)')
 mp.show()
 
 # measure comparison
@@ -55,9 +57,11 @@ cdf = numpy.cumsum(pmf)
 x = numpy.linspace(1e-13,300,50000)
 dx = numpy.diff(x)[0]
 
-mp.plot(xs,cdf)
-mp.plot(xs,asym_cdf,'--')
+mp.plot(xs,cdf,label='Binomial cdf')
+mp.plot(xs,asym_cdf,'--',label='Lognormal cdf')
 mp.xlim((EV-numpy.sqrt(V)*3,EV+numpy.sqrt(V)*5))
+mp.xlabel('x')
+mp.ylabel('F(x)')
 mp.show()
 
 # moments comparison
